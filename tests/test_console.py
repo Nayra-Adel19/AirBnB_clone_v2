@@ -22,7 +22,7 @@ class TestConstructor(unittest.TestCase):
                       "Place": Place, "Review": Review, "User": User}
 
     def test_help_method(self):
-         """ Test Help """
+        """ Test Help """
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
             self.assertEqual(

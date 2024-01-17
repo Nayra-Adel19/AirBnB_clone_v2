@@ -7,6 +7,7 @@ import os
 import json
 import datetime
 
+
 @unittest.skipIf(
     os.getenv("HBNB_TYPE_STORAGE") == "db",
     "test only for FileStorage mode"
@@ -26,8 +27,10 @@ class test_fileStorage(unittest.TestCase):
         """ Remove storage file at end """
         try:
             os.remove('file.json')
-        except:
+        except FileNotFoundError:
             pass
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
 
     def test_obj_list_empty(self):
         """ objects is initially empty """
