@@ -43,17 +43,17 @@ class TestConstructor(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help destroy")
             self.assertEqual(
-                """ Delete an instance based """,
+                """Delete an instance based on the class name and id.""",
                 f.getvalue()[:-1])
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help all")
             self.assertEqual(
-                """ Print all string representation """,
+                """Print all string representation of all instances""",
                 f.getvalue()[:-1])
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help update")
             self.assertEqual(
-                """ Updates an instance based """,
+                """Updates an instance based on the class name and id""",
                 f.getvalue()[:-1])
 
     def rest_file_storage(self):
