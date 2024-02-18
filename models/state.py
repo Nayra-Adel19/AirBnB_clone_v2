@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" State """
+""" FileStorage relationship between State and City """
+
 from models.base_model import BaseModel, Base
 from models import storage_type
 from models.city import City
@@ -8,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """ FileStorage relationship between State and City """
     __tablename__ = 'states'
     if storage_type == 'db':
         name = Column(String(128), nullable=False)

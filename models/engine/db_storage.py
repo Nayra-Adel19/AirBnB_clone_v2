@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Database Storage """
+""" storage engine is not DBStorage """
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.amenity import Amenity
@@ -19,12 +20,12 @@ classes = {"User": User, "State": State, "City": City,
 
 
 class DBStorage:
-    """ database storage """
+    """ storage engine is not DBStorage """
     __engine = None
     __session = None
 
     def __init__(self):
-        """ __init__ new dbstorage """
+        """ storage engine is not DBStorage """
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
         HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
         HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
@@ -42,10 +43,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """
-        query on current db session all cls objects
-        value = object
-        """
+        """ storage engine is not DBStorage """
         dct = {}
         if cls is None:
             for c in classes.values():
@@ -61,7 +59,7 @@ class DBStorage:
         return dct
 
     def new(self, obj):
-        """ adds obj to current db session """
+        """ storage engine is not DBStorage """
         if obj is not None:
             try:
                 self.__session.add(obj)
@@ -72,24 +70,22 @@ class DBStorage:
                 raise ex
 
     def save(self):
-        """ commit all changes of current db """
+        """ storage engine is not DBStorage """
         self.__session.commit()
 
     def delete(self, obj=None):
-        """
-        deletes from current databse session the obj
-        """
+        """ storage engine is not DBStorage """
         if obj is not None:
             self.__session.query(type(obj)).filter(
                 type(obj).id == obj.id).delete()
 
     def reload(self):
-        """ reloads database """
+        """ storage engine is not DBStorage """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
         self.__session = scoped_session(session_factory)()
 
     def close(self):
-        """ closes SQLAlchemy """
+        """ storage engine is not DBStorage """
         self.__session.close()
